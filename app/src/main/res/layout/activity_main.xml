@@ -17,7 +17,6 @@
         android:layout_height="wrap_content"
         android:text="History"
         android:layout_marginBottom="10dp"
-        android:onClick="viewHistory"
         />
 
     <com.github.barteksc.pdfviewer.PDFView

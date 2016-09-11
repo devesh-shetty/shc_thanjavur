@@ -12,12 +12,15 @@ import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
 import com.shockwave.pdfium.PdfDocument;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity implements OnPageChangeListener, OnLoadCompleteListener {
 
 
     private static final String TAG =   MainActivity.class.getName() ;
+
+    @BindView(R.id.pdfView)
     PDFView mPdfView;
 
     Integer pageNumber = 0;
@@ -27,9 +30,10 @@ public class MainActivity extends AppCompatActivity implements OnPageChangeListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mPdfView = (PDFView) findViewById(R.id.pdfView);
+        ButterKnife.bind(this);
     }
 
+    @OnClick(R.id.btn_history)
     public void viewHistory(View view){
         Log.d(TAG, "button clicked");
         mPdfView.fromAsset("church_history.pdf")
@@ -57,6 +61,6 @@ public class MainActivity extends AppCompatActivity implements OnPageChangeListe
     @Override
     public void onPageChanged(int page, int pageCount) {
         pageNumber = page;
-        setTitle(String.format("%s %s / %s", "church", page + 1, pageCount));
+        setTitle(String.format("%s %s / %s", "pdf", page + 1, pageCount));
     }
 }
