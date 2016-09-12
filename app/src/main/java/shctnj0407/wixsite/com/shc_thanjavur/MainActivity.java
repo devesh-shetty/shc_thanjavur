@@ -14,16 +14,18 @@ import com.shockwave.pdfium.PdfDocument;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import shctnj0407.wixsite.com.shc_thanjavur.config.Config;
 
 public class MainActivity extends AppCompatActivity implements OnPageChangeListener, OnLoadCompleteListener {
 
 
-    private static final String TAG =   MainActivity.class.getName() ;
+    private static final String TAG = MainActivity.class.getName() ;
 
     @BindView(R.id.pdfView)
     PDFView mPdfView;
 
     Integer pageNumber = 0;
+    private String currentPdf = "DUMMY";
 
 
     @Override
@@ -33,10 +35,31 @@ public class MainActivity extends AppCompatActivity implements OnPageChangeListe
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.btn_history)
+    @OnClick({R.id.btn_history, R.id.btn_mass_timings})
     public void viewHistory(View view){
-        Log.d(TAG, "button clicked");
-        mPdfView.fromAsset("church_history.pdf")
+
+        int id = view.getId();
+        String pdf = null;
+
+        if( id == R.id.btn_history){
+
+            pdf = Config.PDF_CHURCH_HISTORY;
+
+        }else if(id == R.id.btn_mass_timings){
+
+            pdf = Config.PDF_MASS_TIMINGS;
+
+        }
+
+        if(currentPdf.equals(pdf)){
+            return;
+        }else{
+            currentPdf = pdf;
+        }
+
+        mPdfView.recycle();
+        
+        mPdfView.fromAsset(pdf)
                 .defaultPage(0)
                 .onPageChange(this)
                 .enableAnnotationRendering(true)
