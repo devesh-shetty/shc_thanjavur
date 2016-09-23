@@ -3,6 +3,8 @@ package shctnj0407.wixsite.com.shc_thanjavur;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.github.barteksc.pdfviewer.PDFView;
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements OnPageChangeListe
         }
 
         mPdfView.recycle();
-        
+
         mPdfView.fromAsset(pdf)
                 .defaultPage(0)
                 .onPageChange(this)
@@ -85,5 +87,16 @@ public class MainActivity extends AppCompatActivity implements OnPageChangeListe
     public void onPageChanged(int page, int pageCount) {
         pageNumber = page;
         setTitle(String.format("%s %s / %s", "pdf", page + 1, pageCount));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.toolbar_items, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

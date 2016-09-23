@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_church_timing"
+        android:title="Church Timing"
+        />
+
+    <item
+        android:id="@+id/menu_church_history"
+        android:title="Church History"/>
+
+</menu>
