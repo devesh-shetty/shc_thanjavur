@@ -1,5 +1,7 @@
 package shctnj0407.wixsite.com.shc_thanjavur;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,76 +20,46 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import shctnj0407.wixsite.com.shc_thanjavur.config.Config;
 
-public class MainActivity extends AppCompatActivity implements OnPageChangeListener, OnLoadCompleteListener {
+public class MainActivity extends AppCompatActivity {
 
-
-    private static final String TAG = MainActivity.class.getName() ;
-
-    @BindView(R.id.pdfView)
-    PDFView mPdfView;
-
-    Integer pageNumber = 0;
-    private String currentPdf = "DUMMY";
-
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mContext = MainActivity.this;
     }
 
-    @OnClick({R.id.btn_history, R.id.btn_mass_timings})
-    public void viewHistory(View view){
 
-        int id = view.getId();
-        String pdf = null;
+    @OnClick({R.id.fab_church_history, R.id.fab_gallery, R.id.fab_mass_timing})
+    public void onFABClick(View v){
+        int id = v.getId();
+        Intent intent = null;
 
-        if( id == R.id.btn_history){
+        switch (id){
+            case R.id.fab_church_history:
+                intent = new Intent(mContext, PdfViewActivity.class);
+                intent.putExtra(PdfViewActivity.PDF_NAME, Config.PDF_CHURCH_HISTORY);
+                break;
 
-            pdf = Config.PDF_CHURCH_HISTORY;
+            case R.id.fab_mass_timing:
+                intent = new Intent(mContext, PdfViewActivity.class);
+                intent.putExtra(PdfViewActivity.PDF_NAME, Config.PDF_MASS_TIMINGS);
+                break;
 
-        }else if(id == R.id.btn_mass_timings){
-
-            pdf = Config.PDF_MASS_TIMINGS;
-
+            case R.id.fab_gallery:
+                intent = new Intent(mContext, ImageGalleryActivity.class);
+                break;
         }
 
-        if(currentPdf.equals(pdf)){
-            return;
-        }else{
-            currentPdf = pdf;
+        if(intent != null){
+            startActivity(intent);
         }
 
-        mPdfView.recycle();
-
-        mPdfView.fromAsset(pdf)
-                .defaultPage(0)
-                .onPageChange(this)
-                .enableAnnotationRendering(true)
-                .onLoad(this)
-                .scrollHandle(new DefaultScrollHandle(this))
-                .load();
     }
 
-    @Override
-    public void loadComplete(int nbPages) {
-        PdfDocument.Meta meta = mPdfView.getDocumentMeta();
-        Log.e(TAG, "title = " + meta.getTitle());
-        Log.e(TAG, "author = " + meta.getAuthor());
-        Log.e(TAG, "subject = " + meta.getSubject());
-        Log.e(TAG, "keywords = " + meta.getKeywords());
-        Log.e(TAG, "creator = " + meta.getCreator());
-        Log.e(TAG, "producer = " + meta.getProducer());
-        Log.e(TAG, "creationDate = " + meta.getCreationDate());
-        Log.e(TAG, "modDate = " + meta.getModDate());
-    }
-
-    @Override
-    public void onPageChanged(int page, int pageCount) {
-        pageNumber = page;
-        setTitle(String.format("%s %s / %s", "pdf", page + 1, pageCount));
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -97,6 +69,31 @@ public class MainActivity extends AppCompatActivity implements OnPageChangeListe
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        Intent intent = null;
+
+        switch (id){
+            case R.id.menu_church_history:
+                intent = new Intent(mContext, PdfViewActivity.class);
+                intent.putExtra(PdfViewActivity.PDF_NAME, Config.PDF_CHURCH_HISTORY);
+                break;
+
+            case R.id.menu_church_timing:
+                intent = new Intent(mContext, PdfViewActivity.class);
+                intent.putExtra(PdfViewActivity.PDF_NAME, Config.PDF_MASS_TIMINGS);
+                break;
+
+            case R.id.menu_image_gallery:
+                intent = new Intent(mContext, ImageGalleryActivity.class);
+                break;
+        }
+
+        if(intent != null){
+            startActivity(intent);
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }

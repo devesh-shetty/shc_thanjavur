@@ -3,11 +3,16 @@
 
     <item
         android:id="@+id/menu_church_timing"
-        android:title="Church Timing"
+        android:title="@string/mass_timing"
         />
 
     <item
         android:id="@+id/menu_church_history"
-        android:title="Church History"/>
+        android:title="@string/church_history"/>
+
+    <item
+        android:id="@+id/menu_image_gallery"
+        android:title="@string/gallery"
+        />
 
 </menu>

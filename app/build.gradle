@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "shctnj0407.wixsite.com.shc_thanjavur"
-        minSdkVersion 17
+        minSdkVersion 14
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -27,4 +27,5 @@ dependencies {
     compile 'com.github.barteksc:android-pdf-viewer:2.0.3'
     compile 'com.jakewharton:butterknife:8.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.getbase:floatingactionbutton:1.10.1'
 }
