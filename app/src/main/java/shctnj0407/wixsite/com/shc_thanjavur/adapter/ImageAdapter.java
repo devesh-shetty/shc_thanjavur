@@ -72,7 +72,6 @@ public class ImageAdapter extends BaseAdapter {
         //load the imageView with the bitmap
         Picasso.with(mContext)
                 .load(item.getImgDrawableSrc())
-                .transform(new BitmapTransform(Config.IMAGE_ITEM_MAX_WIDTH, Config.IMAGE_ITEM_MAX_HEIGHT))
                 .resize(Config.IMAGE_ITEM_SIZE, Config.IMAGE_ITEM_SIZE)
                 .centerInside()
                 .placeholder(R.drawable.progress_animation)

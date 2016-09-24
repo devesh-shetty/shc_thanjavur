@@ -8,24 +8,49 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/FullScreenTheme"
+            android:screenOrientation="portrait"
             />
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".PdfViewActivity"
+        <activity
+            android:name=".PdfViewActivity"
             android:parentActivityName=".MainActivity"
-            />
-        <activity android:name=".ImageGalleryActivity"
+            android:screenOrientation="portrait"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+            </activity>
+        <activity
+            android:name=".ImageGalleryActivity"
             android:parentActivityName=".MainActivity"
-            ></activity>
+            android:screenOrientation="portrait"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".DisplayImageActivity"
+            android:parentActivityName=".ImageGalleryActivity"
+            android:screenOrientation="portrait"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ImageGalleryActivity" />
+
+        </activity>
     </application>
 
 </manifest>

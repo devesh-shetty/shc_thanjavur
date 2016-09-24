@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="shctnj0407.wixsite.com.shc_thanjavur.ImageGalleryActivity">
+    tools:context="shctnj0407.wixsite.com.shc_thanjavur.ImageGalleryActivity"
+    android:background="@color/colorPrimaryDark"
+    >
 
     <GridView
         android:id="@+id/gridView_gallery"

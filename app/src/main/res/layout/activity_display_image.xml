@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="shctnj0407.wixsite.com.shc_thanjavur.DisplayImageActivity"
+    android:background="@android:color/background_dark"
+    >
+
+    <ImageView
+        android:id="@+id/iv_display"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>
