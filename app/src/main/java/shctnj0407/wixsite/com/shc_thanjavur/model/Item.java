@@ -1,7 +1,5 @@
 package shctnj0407.wixsite.com.shc_thanjavur.model;
 
-import java.util.HashMap;
-
 /**
  * @author Devesh Shetty
  */

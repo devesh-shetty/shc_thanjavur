@@ -6,17 +6,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import shctnj0407.wixsite.com.shc_thanjavur.R;
-import shctnj0407.wixsite.com.shc_thanjavur.config.Config;
-import shctnj0407.wixsite.com.shc_thanjavur.custom.BitmapTransform;
 import shctnj0407.wixsite.com.shc_thanjavur.custom.SquareImageView;
 import shctnj0407.wixsite.com.shc_thanjavur.model.Item;
 
@@ -55,11 +52,12 @@ public class ImageAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        ViewHolder viewHolder;
+        final ViewHolder viewHolder;
 
         if(convertView == null){
             convertView = mLayoutInflater.inflate(R.layout.image_item, parent, false);
             viewHolder = new ViewHolder(convertView);
+
             convertView.setTag(viewHolder);
         }
         else{
@@ -70,14 +68,21 @@ public class ImageAdapter extends BaseAdapter {
 
 
         //load the imageView with the bitmap
-        Picasso.with(mContext)
-                .load(item.getImgDrawableSrc())
-                .resize(Config.IMAGE_ITEM_SIZE, Config.IMAGE_ITEM_SIZE)
-                .centerInside()
-                .placeholder(R.drawable.progress_animation)
-                .error(R.drawable.error)
-                .into(viewHolder.ivItem);
+//        Picasso.with(mContext)
+//                .load(item.getImgDrawableSrc())
+//                .resize(Config.IMAGE_ITEM_SIZE, Config.IMAGE_ITEM_SIZE)
+//                .centerInside()
+//                .placeholder(R.drawable.progress_animation)
+//                .error(R.drawable.error)
+//                .into(target);
 
+        Glide.with(mContext)
+                .load(item.getImgDrawableSrc())
+                .centerCrop()
+                .error(R.drawable.error)
+                .placeholder(R.drawable.progress_animation)
+                .crossFade()
+                .into(viewHolder.ivItem);
 
         return convertView;
     }
