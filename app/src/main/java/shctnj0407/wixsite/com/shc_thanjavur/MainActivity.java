@@ -11,6 +11,7 @@ import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import shctnj0407.wixsite.com.shc_thanjavur.config.Config;
+import shctnj0407.wixsite.com.shc_thanjavur.constant.Constants;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,12 +34,12 @@ public class MainActivity extends AppCompatActivity {
         switch (id){
             case R.id.fab_church_history:
                 intent = new Intent(mContext, PdfViewActivity.class);
-                intent.putExtra(PdfViewActivity.PDF_NAME, Config.PDF_CHURCH_HISTORY);
+                intent.putExtra(PdfViewActivity.PDF_NAME, Constants.PDF_CHURCH_HISTORY);
                 break;
 
             case R.id.fab_mass_timing:
                 intent = new Intent(mContext, PdfViewActivity.class);
-                intent.putExtra(PdfViewActivity.PDF_NAME, Config.PDF_MASS_TIMINGS);
+                intent.putExtra(PdfViewActivity.PDF_NAME, Constants.PDF_MASS_TIMINGS);
                 break;
 
             case R.id.fab_gallery:
@@ -69,12 +70,12 @@ public class MainActivity extends AppCompatActivity {
         switch (id){
             case R.id.menu_church_history:
                 intent = new Intent(mContext, PdfViewActivity.class);
-                intent.putExtra(PdfViewActivity.PDF_NAME, Config.PDF_CHURCH_HISTORY);
+                intent.putExtra(PdfViewActivity.PDF_NAME, Constants.PDF_CHURCH_HISTORY);
                 break;
 
             case R.id.menu_church_timing:
                 intent = new Intent(mContext, PdfViewActivity.class);
-                intent.putExtra(PdfViewActivity.PDF_NAME, Config.PDF_MASS_TIMINGS);
+                intent.putExtra(PdfViewActivity.PDF_NAME, Constants.PDF_MASS_TIMINGS);
                 break;
 
             case R.id.menu_image_gallery:

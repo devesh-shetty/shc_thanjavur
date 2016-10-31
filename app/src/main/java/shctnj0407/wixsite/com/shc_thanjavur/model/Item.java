@@ -5,17 +5,17 @@ package shctnj0407.wixsite.com.shc_thanjavur.model;
  */
 public class Item {
 
-    private int imgDrawableSrc;
+    private String imgDrawableSrc;
 
-    public Item(int imgDrawableSrc) {
+    public Item(String imgDrawableSrc) {
         this.imgDrawableSrc = imgDrawableSrc;
     }
 
-    public int getImgDrawableSrc() {
+    public String getImgDrawableSrc() {
         return imgDrawableSrc;
     }
 
-    public void setImgDrawableSrc(int imgDrawableSrc) {
+    public void setImgDrawableSrc(String imgDrawableSrc) {
         this.imgDrawableSrc = imgDrawableSrc;
     }
 }

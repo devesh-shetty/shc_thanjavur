@@ -1,9 +1,12 @@
 package shctnj0407.wixsite.com.shc_thanjavur;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,6 +18,7 @@ public class DisplayImageActivity extends AppCompatActivity {
 
     public static final String IMAGE_CLICKED_ID = "IMAGE_CLICKED_ID";
     private PhotoViewAttacher mPhotoViewAttacher;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +28,24 @@ public class DisplayImageActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Intent intent = getIntent();
-        int imageResource = intent.getIntExtra(IMAGE_CLICKED_ID, -1);
+        mContext = DisplayImageActivity.this;
 
-        if(imageResource != -1){
-            mImageView.setImageResource(imageResource);
+        Intent intent = getIntent();
+        String imageResource = intent.getStringExtra(IMAGE_CLICKED_ID);
+
+        if(imageResource != null){
+            Glide.with(mContext)
+                    .load(imageResource)
+                    .centerCrop()
+                    .error(R.drawable.error)
+                    .placeholder(R.drawable.progress_animation)
+                    .crossFade()
+                    .into(mImageView);
+
             mPhotoViewAttacher = new PhotoViewAttacher(mImageView);
+        }
+        else {
+            mImageView.setImageResource(R.drawable.error);
         }
 
 
