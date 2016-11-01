@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,12 +35,12 @@ public class DisplayImageActivity extends AppCompatActivity {
         String imageResource = intent.getStringExtra(IMAGE_CLICKED_ID);
 
         if(imageResource != null){
+
             Glide.with(mContext)
                     .load(imageResource)
-                    .centerCrop()
-                    .error(R.drawable.error)
                     .placeholder(R.drawable.progress_animation)
-                    .crossFade()
+                    .error(R.drawable.error)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(mImageView);
 
             mPhotoViewAttacher = new PhotoViewAttacher(mImageView);

@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
@@ -82,6 +83,7 @@ public class ImageAdapter extends BaseAdapter {
                 .error(R.drawable.error)
                 .placeholder(R.drawable.progress_animation)
                 .crossFade()
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(viewHolder.ivItem);
 
         return convertView;

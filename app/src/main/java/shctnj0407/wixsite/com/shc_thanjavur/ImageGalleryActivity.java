@@ -50,18 +50,6 @@ public class ImageGalleryActivity extends AppCompatActivity {
         mContext = ImageGalleryActivity.this;
 
         mItemList = new ArrayList<>();
-//        int []photos = {
-//                R.drawable.img_1, R.drawable.img_2, R.drawable.img_3, R.drawable.img_4,
-//                R.drawable.img_5, R.drawable.img_6, R.drawable.img_7, R.drawable.img_8,
-//                R.drawable.img_9, R.drawable.img_10, R.drawable.img_11, R.drawable.img_12,
-//                R.drawable.img_13, R.drawable.img_14, R.drawable.img_15, R.drawable.img_16,
-//                R.drawable.img_17
-//        };
-//
-//        for(int pic : photos){
-//            Item item = new Item(pic);
-//            mItemList.add(item);
-//        }
 
         mImageAdapter = new ImageAdapter(mContext, mItemList);
         mGridViewGallery.setAdapter(mImageAdapter);
@@ -100,10 +88,10 @@ public class ImageGalleryActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... arg0) {
-            HttpHandler sh = new HttpHandler();
+            HttpHandler httpHandler = new HttpHandler();
 
             // Making a request to url and getting response
-            String jsonStr = sh.makeServiceCall(Constants.BASE_URL+Config.GALLERY_WEB_SERVICE_URL);
+            String jsonStr = httpHandler.makeServiceCall(Constants.BASE_URL+Config.GALLERY_WEB_SERVICE_URL);
 
             Log.e(TAG, "Response from url: " + jsonStr);
 
@@ -111,9 +99,9 @@ public class ImageGalleryActivity extends AppCompatActivity {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
-                    int totalCount = Integer.parseInt(jsonObj.getString(Constants.TOTAL_COUNT));
+                    int totalCount = Integer.parseInt(jsonObj.getString(Constants.TOTAL_COUNT)) + 2;
 
-                    // looping through All Contacts
+                    // looping through All Images
                     for (int i = 2; i < totalCount; i++) {
 
                         String imageUrl = jsonObj.getString(i+"");
@@ -141,7 +129,7 @@ public class ImageGalleryActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Toast.makeText(getApplicationContext(),
-                                "Couldn't get data from server. Please contact the developer",
+                                "Couldn't get data from server. Check your internet connection",
                         Toast.LENGTH_LONG)
                                 .show();
                     }

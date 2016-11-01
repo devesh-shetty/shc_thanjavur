@@ -13,6 +13,6 @@ public final class Config {
     //the url of the gallery web service
     public static final String GALLERY_WEB_SERVICE_URL = "galleryService.php";
     //sub-directory of images
-    public static final String GALLERY_IMAGE_SUB_DIRECTORY = "assets/gallery/";
+    public static final String GALLERY_IMAGE_SUB_DIRECTORY = "assets/gallery/compressed/";
 
 }
