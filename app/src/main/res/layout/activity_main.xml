@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
-    tools:context="shctnj0407.wixsite.com.shc_thanjavur.MainActivity"
+    tools:context="shctnj0407.wixsite.com.shc_thanjavur.activity.MainActivity"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/indigoShade">

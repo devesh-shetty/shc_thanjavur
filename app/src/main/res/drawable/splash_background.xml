@@ -4,13 +4,11 @@
     <item
         android:drawable="@color/colorClouds"/>
 
-    <item>
         <item
             android:gravity="center"
             android:width="48dp"
             android:height="48dp"
             android:drawable="@drawable/ic_cathedral_icon"/>
 
-    </item>
 
 </layer-list>

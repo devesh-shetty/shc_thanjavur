@@ -1,4 +1,4 @@
-package shctnj0407.wixsite.com.shc_thanjavur;
+package shctnj0407.wixsite.com.shc_thanjavur.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,7 +10,7 @@ import android.view.View;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import shctnj0407.wixsite.com.shc_thanjavur.config.Config;
+import shctnj0407.wixsite.com.shc_thanjavur.R;
 import shctnj0407.wixsite.com.shc_thanjavur.constant.Constants;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.fab_gallery:
-                intent = new Intent(mContext, ImageGalleryActivity.class);
+                intent = new Intent(mContext, ImageListActivity.class);
                 break;
         }
 
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.menu_image_gallery:
-                intent = new Intent(mContext, ImageGalleryActivity.class);
+                intent = new Intent(mContext, ImageListActivity.class);
                 break;
         }
 

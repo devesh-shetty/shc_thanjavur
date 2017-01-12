@@ -4,24 +4,23 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
+        android:name=".app.AppController"
         android:allowBackup="true"
         android:icon="@drawable/ic_cathedral_icon"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme"
         android:largeHeap="true"
-        >
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/FullScreenTheme"
+            android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
-            />
+            android:theme="@style/FullScreenTheme" />
         <activity
-            android:name=".SplashActivity"
-            android:theme="@style/SplashTheme"
+            android:name=".activity.SplashActivity"
             android:screenOrientation="portrait"
-            >
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,31 +28,21 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PdfViewActivity"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"
-            >
+            android:name=".activity.PdfViewActivity"
+            android:parentActivityName=".activity.MainActivity"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-            </activity>
-        <activity
-            android:name=".ImageGalleryActivity"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"
-            >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".activity.MainActivity" />
         </activity>
-        <activity android:name=".DisplayImageActivity"
-            android:parentActivityName=".ImageGalleryActivity"
+        
+        <activity android:name=".activity.ImageListActivity"
             android:screenOrientation="portrait"
+            android:parentActivityName=".activity.MainActivity"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ImageGalleryActivity" />
-
+                android:value=".activity.MainActivity" />
         </activity>
     </application>
 

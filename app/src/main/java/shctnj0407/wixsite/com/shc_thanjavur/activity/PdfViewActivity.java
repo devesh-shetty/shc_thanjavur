@@ -1,4 +1,4 @@
-package shctnj0407.wixsite.com.shc_thanjavur;
+package shctnj0407.wixsite.com.shc_thanjavur.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import com.shockwave.pdfium.PdfDocument;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import shctnj0407.wixsite.com.shc_thanjavur.R;
 
 public class PdfViewActivity extends AppCompatActivity implements OnPageChangeListener, OnLoadCompleteListener {
 
